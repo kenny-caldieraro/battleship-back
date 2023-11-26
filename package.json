@@ -1,0 +1,46 @@
+{
+  "name": "base_node_v2",
+  "version": "1.0.0",
+  "description": "Les étudiants React vont bientôt coder un petit appli de blog qui consomme une API simpliste (vous me direz, c'est pas très important, ils se concentrent sur le front). Du coup, on pourrait peut-être reprendre le concept mais l'étendre grâce aux super-pouvoirs d'Express et Postgres, non ? C'est beau de collaborer entre spés, vous trouvez pas ?",
+  "scripts": {
+    "resetDB": "sqitch revert -y; sqitch deploy; DEBUG=import:* node ./data/import-data.js",
+    "start": "node .",
+    "dev": "DEBUG=*,-express:*,-nodemon*,-send,-body-parser npx nodemon",
+    "format": "prettier --write ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/O-clock-Galactica/e06-data-express-oblog-MaximeRaynal.git"
+  },
+  "author": "kenny",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/O-clock-Spe-Data/express-oblog/issues"
+  },
+  "homepage": "https://github.com/O-clock-Spe-Data/express-oblog",
+  "dependencies": {
+    "bunyan": "^1.8.15",
+    "cors": "^2.8.5",
+    "debug": "^4.3.3",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-jsdoc-swagger": "^1.6.7",
+    "joi": "^17.5.0",
+    "pg": "^8.7.1",
+    "pug": "^3.0.2"
+  },
+  "devDependencies": {
+    "eslint": "^8.5.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "prettier": "^2.5.1",
+    "prettier-plugin-sql": "^0.4.1"
+  },
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  }
+}

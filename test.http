@@ -1,0 +1,98 @@
+################################################################################
+# Fichier de test des routes HTTP de l'API
+# Nécessite l'extension REST Client pour VSCode
+# https://marketplace.visualstudio.com/items?itemName=humao.rest-client
+################################################################################
+@endpoint = http://localhost:{{$dotenv PORT}}/api
+
+### API home
+GET {{ endpoint }}/
+
+### API doc
+GET {{ endpoint }}/docs
+
+### 404
+GET {{ endpoint }}/categories/rt
+
+#########################
+#         POSTS         #
+#########################
+
+### Liste des posts
+GET {{ endpoint }}/posts
+
+### Récupérér un post par son id qui n'existe pas
+GET {{ endpoint }}/posts/123
+
+### Récupérér un post par son id
+GET {{ endpoint }}/posts/2
+
+### Récupérér des posts par un id de catégorie
+GET {{ endpoint }}/posts/category/2
+
+### Créer un post en erreur
+POST {{ endpoint }}/posts
+content-type: application/json
+
+{
+    "title": "test d'article",
+    "excerpt": "extrait de l'article de test",
+    "content": "contenu de l'article de test",
+    "category_id": 1
+}
+
+### Créer un post
+POST {{ endpoint }}/posts
+content-type: application/json
+
+{
+    "slug": "test-d-article",
+    "title": "test d'article",
+    "excerpt": "extrait de l'article de test",
+    "content": "contenu de l'article de test",
+    "category_id": 1
+}
+
+### Modifier un post
+PATCH {{ endpoint }}/posts/1
+content-type: application/json
+
+{
+    "slug": "test-d-article",
+    "title": "test d'article"
+}
+
+### Supprimer un post par son id
+DELETE {{ endpoint }}/posts/123
+
+
+#########################
+#      CATEGORIES       #
+#########################
+
+### liste des catégories
+GET {{ endpoint }}/categories
+
+
+### Récupérér une categorie par son id
+GET {{ endpoint }}/categories/1
+
+### Créer une catégorie
+POST {{ endpoint }}/categories
+content-type: application/json
+
+{
+    "label": "test2",
+    "route": "/test2"
+}
+
+### Modifier une catégorie
+PATCH {{ endpoint }}/categories/1
+content-type: application/json
+
+{
+    "label": "test3"
+}
+
+### Documentation Open-API
+GET {{ endpoint }}/docs
